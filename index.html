@@ -1,363 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover Nyabugogo, a busy transport and business hub in Kigali, Rwanda.">
-  <title>Nyabugogo | The Heart of Movement in Kigali</title>
-  <style>
-    :root {
-      --navy: #10243a;
-      --blue: #1266d6;
-      --sky: #eaf4ff;
-      --gold: #f4b942;
-      --ink: #182536;
-      --muted: #637083;
-      --white: #fff;
-      --surface: #f6f8fb;
-      --radius: 18px;
-      --shadow: 0 14px 35px rgba(16, 36, 58, .10);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ndagukunda</title>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      line-height: 1.6;
-      background: var(--white);
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1120px, 90%); margin: auto; }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid #e8edf3;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-    }
-    .navbar {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .logo { font-weight: 900; letter-spacing: -.7px; font-size: 1.35rem; color: var(--navy); }
-    .logo span { color: var(--blue); }
-    nav { display: flex; align-items: center; gap: 25px; }
-    nav a { color: #344256; font-size: .95rem; font-weight: 700; }
-    nav a:hover { color: var(--blue); }
-    .nav-cta, .btn {
-      display: inline-block;
-      background: var(--blue);
-      color: white;
-      padding: 12px 19px;
-      border-radius: 10px;
-      font-weight: 800;
-      transition: transform .2s, background .2s;
-    }
-    .nav-cta:hover, .btn:hover { background: #0c50ac; transform: translateY(-2px); }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(
+                circle, #063b91, #020817
+            );
+            font-family: Arial, sans-serif;
+        }
 
-    .hero {
-      background:
-        radial-gradient(circle at 85% 15%, rgba(244,185,66,.22), transparent 27%),
-        linear-gradient(120deg, #10243a 0%, #153d67 65%, #1266d6 100%);
-      color: white;
-      padding: 95px 0 88px;
-      overflow: hidden;
-    }
-    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 55px; }
-    .eyebrow {
-      display: inline-block;
-      color: #ffe09a;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: .82rem;
-      letter-spacing: .5px;
-      margin-bottom: 20px;
-    }
-    h1 { font-size: clamp(2.7rem, 5vw, 4.7rem); line-height: 1.04; letter-spacing: -2px; margin-bottom: 22px; }
-    .hero p { max-width: 570px; color: #e0ebf7; font-size: 1.1rem; margin-bottom: 30px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
-    .btn-gold { background: var(--gold); color: var(--navy); }
-    .btn-gold:hover { background: #ffd16b; }
-    .btn-outline { border: 1px solid rgba(255,255,255,.55); background: transparent; }
-    .btn-outline:hover { background: rgba(255,255,255,.12); }
-    .hero-art {
-      min-height: 350px;
-      border-radius: 28px;
-      padding: 28px;
-      background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.22);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 24px 60px rgba(0,0,0,.16);
-      position: relative;
-    }
-    .route-line { height: 4px; width: 100%; background: rgba(255,255,255,.22); border-radius: 5px; margin: 22px 0; position: relative; }
-    .route-line:before, .route-line:after { content: ""; width: 15px; height: 15px; border: 4px solid white; background: var(--blue); border-radius: 50%; position: absolute; top: -9px; }
-    .route-line:before { left: 12%; }
-    .route-line:after { right: 12%; background: var(--gold); }
-    .art-label { font-size: .8rem; color: #c8d9ed; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; }
-    .art-title { font-size: 1.7rem; font-weight: 900; }
-    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 20px; }
-    .stat { background: rgba(255,255,255,.09); border-radius: 13px; padding: 14px 10px; text-align: center; }
-    .stat strong { display: block; color: #ffe09a; font-size: 1.15rem; }
-    .stat small { color: #e0ebf7; font-size: .75rem; }
-
-    section { padding: 78px 0; }
-    .section-head { max-width: 680px; margin: 0 auto 38px; text-align: center; }
-    .section-head .kicker { color: var(--blue); text-transform: uppercase; font-size: .78rem; font-weight: 900; letter-spacing: 1.6px; }
-    h2 { color: var(--navy); font-size: clamp(2rem, 3vw, 2.7rem); line-height: 1.15; letter-spacing: -.8px; margin: 9px 0 14px; }
-    .section-head p { color: var(--muted); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: center; }
-    .about-panel {
-      min-height: 300px;
-      border-radius: 24px;
-      background: var(--sky);
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .about-panel:after {
-      content: "NY";
-      position: absolute;
-      right: -12px;
-      bottom: -75px;
-      font-size: 14rem;
-      font-weight: 900;
-      color: rgba(18,102,214,.07);
-    }
-    .about-panel .big-icon { font-size: 3rem; margin-bottom: 10px; }
-    .about-panel h3 { font-size: 1.55rem; color: var(--navy); margin-bottom: 10px; }
-    .about-copy p { color: var(--muted); margin: 14px 0; }
-    .check-list { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
-    .check-list li:before { content: "✓"; color: var(--blue); font-weight: 900; margin-right: 10px; }
-
-    .features { background: var(--surface); }
-    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .card {
-      background: white;
-      border: 1px solid #e7edf4;
-      border-radius: var(--radius);
-      padding: 27px;
-      box-shadow: 0 6px 20px rgba(16,36,58,.035);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-    .card-icon {
-      width: 54px; height: 54px; display: grid; place-items: center;
-      background: var(--sky); border-radius: 15px; font-size: 1.6rem; margin-bottom: 18px;
-    }
-    .card h3 { color: var(--navy); margin-bottom: 9px; font-size: 1.18rem; }
-    .card p { color: var(--muted); font-size: .96rem; }
-
-    .travel-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .travel-item { border-left: 4px solid var(--gold); padding: 8px 0 8px 18px; }
-    .travel-item h3 { color: var(--navy); margin-bottom: 5px; }
-    .travel-item p { color: var(--muted); font-size: .95rem; }
-
-    .cta { padding: 0 0 78px; }
-    .cta-box {
-      border-radius: 24px;
-      padding: 42px;
-      background: linear-gradient(115deg, #10243a, #1558a1);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-    .cta-box h2 { color: white; margin-top: 0; }
-    .cta-box p { color: #d8e6f5; max-width: 650px; }
-    footer { background: #0b1929; color: #c2cedb; padding: 27px 0; }
-    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; font-size: .9rem; }
-    .footer-row strong { color: white; }
-    .note { font-size: .8rem; color: #8ea1b6; margin-top: 8px; }
-
-    @media (max-width: 800px) {
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .hero { padding: 70px 0; }
-      .hero-art { min-height: 280px; }
-      .card-grid { grid-template-columns: repeat(2,1fr); }
-      .travel-grid { grid-template-columns: 1fr; }
-      nav { gap: 13px; flex-wrap: wrap; justify-content: flex-end; }
-      nav a { font-size: .85rem; }
-      .nav-cta { display: none; }
-    }
-    @media (max-width: 540px) {
-      .navbar { padding: 15px 0; align-items: flex-start; flex-direction: column; gap: 10px; }
-      nav { justify-content: flex-start; gap: 15px; }
-      .card-grid { grid-template-columns: 1fr; }
-      .cta-box { padding: 28px; align-items: flex-start; flex-direction: column; }
-      h1 { letter-spacing: -1.3px; }
-      .stat-row { gap: 7px; }
-      .stat { padding: 12px 5px; }
-    }
-  </style>
+        h1 {
+            color: white;
+            font-size: clamp(2.5rem, 10vw, 7rem);
+            font-weight: 900;
+            text-align: center;
+            text-shadow:
+                0 0 10px #00bfff,
+                0 0 30px #007bff,
+                0 0 60px #0055ff;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container navbar">
-      <a class="logo" href="#home">NYABUGOGO<span>.</span></a>
-      <nav aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Highlights</a>
-        <a href="#travel">Travel</a>
-      </nav>
-      <a class="nav-cta" href="#explore">Explore Nyabugogo ↗</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">KIGALI • RWANDA</span>
-          <h1>The heart of movement in Kigali.</h1>
-          <p>Discover Nyabugogo — a lively gateway where people, businesses and journeys connect. From public transport to busy markets, it is one of Kigali’s important centres of daily life.</p>
-          <div class="hero-actions">
-            <a class="btn btn-gold" href="#about">Discover Nyabugogo</a>
-            <a class="btn btn-outline" href="#travel">Travel information</a>
-          </div>
-        </div>
-        <div class="hero-art" aria-label="Illustration of routes connecting across Nyabugogo">
-          <div>
-            <div class="art-label">One place, many journeys</div>
-            <div class="art-title">Connect. Move. Discover.</div>
-            <div class="route-line"></div>
-            <div style="display:flex;justify-content:space-between;gap:12px">
-              <div><strong>City routes</strong><br><small style="color:#c8d9ed">Around Kigali</small></div>
-              <div style="text-align:right"><strong>Regional travel</strong><br><small style="color:#c8d9ed">Beyond the city</small></div>
-            </div>
-          </div>
-          <div class="stat-row">
-            <div class="stat"><strong>Transport</strong><small>Connections</small></div>
-            <div class="stat"><strong>Business</strong><small>Activity</small></div>
-            <div class="stat"><strong>Community</strong><small>Daily life</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container about-grid">
-        <div class="about-panel">
-          <div class="big-icon">🚌</div>
-          <h3>A gateway to places near and far</h3>
-          <p>Nyabugogo is widely known for its transport hub and busy commercial surroundings.</p>
-        </div>
-        <div class="about-copy">
-          <span class="section-head kicker">About the area</span>
-          <h2>A busy part of Kigali with a story to tell.</h2>
-          <p>Located in Kigali, Nyabugogo brings together commuters, travellers, traders and service providers. Its transport links make it an important starting point for many journeys across Rwanda.</p>
-          <p>The area is also shaped by everyday commerce: shops, food vendors, small businesses and services that support the people passing through and living nearby.</p>
-          <ul class="check-list">
-            <li>A key transport connection point</li>
-            <li>A lively trading and business area</li>
-            <li>A meeting point for people from different places</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="features" id="services">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">What makes it special</span>
-          <h2>More than a transport stop</h2>
-          <p>Nyabugogo is part of the rhythm of Kigali — practical, energetic and always connected to movement.</p>
-        </div>
-        <div class="card-grid">
-          <article class="card">
-            <div class="card-icon">🚌</div>
-            <h3>Transport connections</h3>
-            <p>People use the area to connect with city transport and travel services. Check current routes and departure details before travelling.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon">🛍️</div>
-            <h3>Markets and shops</h3>
-            <p>Explore a busy commercial environment with shops, traders and everyday services for local residents and visitors.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon">🍲</div>
-            <h3>Food and refreshments</h3>
-            <p>Find local food options and quick refreshments around the commercial area while going about your day.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon">🤝</div>
-            <h3>Community life</h3>
-            <p>Nyabugogo brings together commuters, workers, business owners and visitors from across the city and country.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon">📍</div>
-            <h3>Urban connection</h3>
-            <p>Its position makes it a familiar reference point when moving around Kigali and planning onward journeys.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon">🌱</div>
-            <h3>A changing neighbourhood</h3>
-            <p>Like many urban centres, the area continues to evolve with the needs of transport, trade and the wider city.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="travel">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">Plan your visit</span>
-          <h2>Useful tips before you go</h2>
-          <p>A little preparation can make your trip through a busy transport and business area easier.</p>
-        </div>
-        <div class="travel-grid">
-          <div class="travel-item">
-            <h3>Confirm your route</h3>
-            <p>Ask the transport operator or station staff about your destination, departure point and latest schedule.</p>
-          </div>
-          <div class="travel-item">
-            <h3>Keep belongings secure</h3>
-            <p>As in any busy public place, keep your phone, wallet and bags close, especially in crowded areas.</p>
-          </div>
-          <div class="travel-item">
-            <h3>Allow extra time</h3>
-            <p>Traffic and passenger activity can vary. Leave some extra time when travelling for an appointment.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta" id="explore">
-      <div class="container">
-        <div class="cta-box">
-          <div>
-            <h2>Nyabugogo: where journeys meet.</h2>
-            <p>Whether you are passing through, doing business or discovering Kigali, take time to experience the energy of this important urban hub.</p>
-          </div>
-          <a class="btn btn-gold" href="#home">Back to top ↑</a>
-        </div>
-        <p class="note">This is a sample informational website. Confirm transport routes, opening hours and service details locally before relying on them.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-row">
-      <div><strong>NYABUGOGO.</strong> &nbsp; Kigali, Rwanda</div>
-      <div>Designed with HTML &amp; CSS</div>
-      <div>© <span id="year">2026</span> Nyabugogo Guide</div>
-    </div>
-  </footer>
+    <h1>Ndagukunda</h1>
 </body>
 </html>
